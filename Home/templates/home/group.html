@@ -1,0 +1,228 @@
+
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <style>
+
+#Div2 {
+  display: none;
+}
+    </style>
+    <script>
+	$(document).ready(function() {
+    var max_fields      = 11; //maximum input boxes allowed
+    var wrapper         = $(".input_fields_wrap"); //Fields wrapper
+    var add_button      = $(".add_field_button"); //Add button ID
+
+    var x = 1; //initlal text box count
+
+
+   $(add_button).click(function(e){ //on add input button click
+        e.preventDefault();
+        if(x < max_fields){ //max input box allowed
+
+		     //text box increment
+
+            $(wrapper).append('<div><input id="xyz" type="text"class="form-control form-control-lg form-control-a" /><a href="#" class="remove_field">Remove</a></div>'); //add input box
+            x++;
+	  }
+    });
+
+    $(wrapper).on("click",".remove_field", function(e){ //user click on remove text
+
+		e.preventDefault();
+		$(this).parent('div').remove();
+		x--;
+    })
+});
+
+	</script>
+<script>
+var i;
+i=1;
+
+function generateRow()
+{
+  i++;
+
+var d=document.getElementById("div");
+d.name="food";
+d.innerHTML+="<p><input type='text' name='f" + i + "' /></p>";
+}
+
+</script>
+    <script>
+        $(document).ready(function() {
+    var max_fields = 9;
+    var wrapper = $(".container1");
+    var add_button = $(".add_form_field");
+
+    var x = 1;
+    $(add_button).click(function(e) {
+        e.preventDefault();
+        if (x < max_fields) {
+            x++;
+            $(wrapper).append('<div><input type="text" class="form form-control-lg form-control-a" name="f'+x+'" required/><a href="#" class="delete">Delete</a></div>'); //add input box
+        } else {
+            alert('You Reached the limits')
+        }
+    });
+
+    $(wrapper).on("click", ".delete", function(e) {
+        e.preventDefault();
+        $(this).parent('div').remove();
+        x--;
+    })
+});
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<body>
+{% include 'home/header2.html' %}
+
+  <section class="section-services section-t8">
+    <div class="container">
+      <div class="row">
+          <div class="input_fields_wrap">
+              <form action="/Group/group1/" method="post" role="form">
+    {% csrf_token%}
+                  <div><input type="text" name="gname"class="form-control form-control-lg form-control-a" placeholder="Enter GroupName" required></div><br>
+  <div class="container1">
+    <button class="add_form_field btn btn-ba">Add Friend &nbsp;
+      <span style="font-size:16px; font-weight:bold;">+ </span>
+    </button><br>
+      <p></p>
+    <div><input type="text" class="form form-control-lg form-control-a" name="f1" required></div>
+</div>
+                  <br><br>
+                  <div class="col-md-6 mb-3">
+                    <button type="submit" value="submit" class="btn btn-ba">Submit</button>
+                  </div>
+              </form>
+                  {{msg}}
+
+         </div>
+      </div>
+    </div>
+
+</section>
+
+</body>
+
+
+  <section class="section-services section-t8">
+ <div class="container">
+
+      <div class="row">
+                  <div class="col-md-5 mb-3">
+                    <div class="form-group">
+                      <label>Group Name</label>
+                        {% for i in ggname %}
+                      <input type="text" name="fname{{forloop.counter}}" class="form-control form-control-lg form-control-a" placeholder="{{i}}" data-rule="minlen:4" data-msg="Please enter at least 4 chars" readonly>
+                    {% endfor %}
+                    </div>
+                  </div>
+                   <div class="col-md-5 mb-3">
+                    <div class="form-group">
+                      <label>Expanse</label>
+                        {% for i in ggname%}
+                      <input type="text" name="fname{{forloop.counter}}" class="form-control form-control-lg form-control-a" placeholder="550" data-rule="minlen:4" data-msg="Please enter at least 4 chars"readonly>
+                    {% endfor %}
+                      </div>
+                   </div>
+<div class="col-md-2 mb-2">
+                    <div class="form-group">
+                      <label>&nbsp;</label>
+
+
+
+    <body>
+                        {% for i in ggname %}
+                        {% endfor %}
+                        {% for i in ggname %}
+                        <form action="/Group/groupexp/" method="post" role="form">
+                        {% csrf_token %}
+                            <input type="hidden" name="gname" value="{{i}}" data-rule="minlen:4" data-msg="Please enter at least 4 chars" >
+                        <button type="submit" value="submit" class="btn btn-ab form-control form-control-lg form-control-a">Add</button>
+                        </form>
+                        {% endfor %}
+    </body>
+
+
+                      </div>
+                   </div>
+ </div>
+ </div>
+  </section>
+  <!--<section class="section-services section-t8">-->
+    <!--<div class="container">-->
+      <!--<div class="row">-->
+          <!--<div class="input_fields_wrap">-->
+              <!--<form action="/Group/group1/" method="post" role="form">-->
+    <!--{% csrf_token%}-->
+               <!--<div><input type="text" name="gname"class="form-control form-control-lg form-control-a" placeholder="Enter GroupName"></div><br>-->
+               <!--<div><input type="text" name="f1"class="form-control form-control-lg form-control-a" placeholder="Member1"></div>-->
+               <!--<div><input type="text" name="f2"class="form-control form-control-lg form-control-a" placeholder="Member2"></div>-->
+               <!--<div><input type="text" name="f3"class="form-control form-control-lg form-control-a" placeholder="Member3"></div>-->
+               <!--<div><input type="text" name="f4"class="form-control form-control-lg form-control-a"placeholder="Member4"></div>-->
+               <!--<div><input type="text" name="f5"class="form-control form-control-lg form-control-a"placeholder="Membert5"></div>-->
+               <!--<div><input type="text" name="f6"class="form-control form-control-lg form-control-a" placeholder="Member6"></div>-->
+               <!--<div><input type="text" name="f7"class="form-control form-control-lg form-control-a"placeholder="Member7"></div>-->
+               <!--<div><input type="text" name="f8"class="form-control form-control-lg form-control-a"placeholder="Member8"></div>-->
+               <!--<div><input type="text" name="f9"class="form-control form-control-lg form-control-a"placeholder="Member9"></div>-->
+               <!--<div><input type="text" name="f10"class="form-control form-control-lg form-control-a"placeholder="Member10"></div>-->
+                  <!--<br><br>-->
+                  <!--<div class="col-md-6 mb-3">-->
+                    <!--<button type="submit" value="submit" class="btn btn-ab">Submit</button>-->
+                  <!--</div>-->
+              <!--</form>-->
+                  <!--{{msg}}-->
+
+         <!--</div>-->
+      <!--</div>-->
+    <!--</div>-->
+
+<!--</section>-->
+
+<!--</body>-->
+
+ <!--<div class="row">-->
+                  <!--<div class="col-md-4 mb-3">-->
+                    <!--<div class="form-group">-->
+                      <!--<label>First Name</label>-->
+                        <!--{% for i in ggname %}-->
+                      <!--<input type="text" name="fname{{forloop.counter}}" class="form-control form-control-lg form-control-a" placeholder="{{i}}" data-rule="minlen:4" data-msg="Please enter at least 4 chars" readonly>-->
+                    <!--{% endfor %}-->
+                    <!--</div>-->
+                  <!--</div>-->
+                   <!--<div class="col-md-2 mb-3">-->
+                    <!--<div class="form-group">-->
+                      <!--<label>Expanse</label>-->
+                        <!--{% for i in ggname%}-->
+                      <!--<input type="text" name="fname{{forloop.counter}}" class="form-control form-control-lg form-control-a" placeholder="{{i}}" data-rule="minlen:4" data-msg="Please enter at least 4 chars"readonly>-->
+                    <!--{% endfor %}-->
+                      <!--</div>-->
+                   <!--</div>-->
+<!--<div class="col-md-1 mb-2">-->
+                    <!--<div class="form-group">-->
+                      <!--<label>&nbsp;</label>-->
+
+
+
+    <!--<body>-->
+                        <!--{% for i in ggname %}-->
+                        <!--{% endfor %}-->
+                        <!--{% for i in ggname %}-->
+                        <!--<form action="/Group/groupexp/" method="post" role="form">-->
+                        <!--{% csrf_token %}-->
+                            <!--<input type="hidden" name="gname" value="{{i}}" data-rule="minlen:4" data-msg="Please enter at least 4 chars" >-->
+                        <!--<button type="submit" value="submit" class="btn btn-ab form-control form-control-lg form-control-a">Add</button>-->
+                        <!--</form>-->
+                        <!--{% endfor %}-->
+    <!--</body>-->
+
+
+                      <!--</div>-->
+                   <!--</div>-->
+ <!--</div>-->
+
+
+  {%include 'home/footer.html'%}

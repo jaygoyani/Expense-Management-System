@@ -1,0 +1,69 @@
+
+{%block title%}Friexe{%endblock%}
+    {%include 'home/header2.html'%}
+<html>
+
+
+    <body>
+  <section class="section-services section-t8">
+    <div class="container">
+      <div class="row">
+        {{fname}}
+<form  method="post" class="container row t8">
+{% csrf_token%}
+<input   type="hidden" name="exeupdate"  class="form-control form-control-lg form-control-a" value="{{exeupdate.id}}"  >
+        <div class="col-md-3 mb-1">
+            <div class="form-group">
+              <label>Add</label>
+              <select name="add" class="form-control form-control-lg form-control-a"  id="bedrooms">
+                  <option>{{ exeupdate.exptype }}</option>
+                <option>Other</option>
+                <option>Food</option>
+                <option>Entertainment</option>
+                <option>Home</option>
+                <option>Life</option>
+                <option>Transportation</option>
+                <option>Utilities</option>
+              </select>
+            </div>
+          </div>
+        <div class="col-md-3 mb-1">
+            <div class="form-group">
+              <label>Pay Option</label>
+              <select name="add1" class="form-control form-control-lg form-control-a" >
+                <option>{{ exeupdate.details2 }}</option>
+                  <option>Split</option>
+                <option>You owe full Expense</option>
+                <option>They owe full Expense</option>
+              </select>
+            </div>
+          </div>
+          <div class="col-md-3 mb-1">
+            <div class="form-group">
+              <label>Amount</label>
+            <input class="form-control form-control-lg form-control-a" min="0" value="{{ exeupdate.amount }}" title="This must be a number with up to 2 decimal places and/or %" oninvalid="this.setCustomValidity('Please Enter valid Number ')" oninput="setCustomValidity('')" pattern="[0-9]+(\.[0-9]{0,2})?%?" id="garages" name="amount" required>            </div>
+          </div>
+        <div class="col-md-3 mb-1">
+            <div class="form-group">
+                <label>Details</label>
+                <textarea rows="1" cols="1" title="Maximum 200 Characters"  oninvalid="this.setCustomValidity('Please Enter valid Details')" oninput="setCustomValidity('')" name="details" class="form-control form-control-lg form-control-a"  placeholder="Details" maxlength="200" >{{ exeupdate.details }}</textarea>
+            </div>
+        </div>
+    <div class="col-md-2 mb-3"></div>
+          <div class="col-md-2 mb-3">
+                    <button formaction="/Friend/exeup/" class="btn btn-ba form-control form-control-lg form-control-a">Update</button>
+          </div> <div class="col-md-2 mb-3"></div>
+    <div class="col-md-2 mb-3">
+                    <button formaction="/Friend/exedel/" class="btn btn-ba form-control form-control-lg form-control-a">Settle Up</button>
+          </div>
+</form>
+    </div>
+    </div>
+</section>
+
+
+
+    </body>
+
+</html>
+{%include 'home/footer.html'%}

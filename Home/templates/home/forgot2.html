@@ -1,0 +1,31 @@
+{% extends 'home/base.html' %}
+{%block title%}Login{%endblock%}
+{% block body%}
+{% include 'home/header.html'%}
+<center>
+    <section class="contact">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-12 section-t8">
+	<form action="/Account/change/" method="post"> {% csrf_token %}
+		<center>
+			<p> we have sent you 6 digit varification code.<p>
+			<p> please Enter here to verify. <p>
+			OTP : <input type="text" name="otp"  size="25" class="form-control-lg form-control-a" placeholder="Enter OTP" pattern=.{6,6} required> <br><br>
+			<input type="submit" value="Verify" class="btn btn-ab">
+		</center>
+	</form>
+</div>
+      </div>
+    </div>
+  </section>
+    </center>
+<section class="section-services section-t8">
+    <div class="container">
+      <div class="row">
+
+    </div>
+    </div>
+</section>
+{%include 'home/footer.html'%}
+{%endblock%}

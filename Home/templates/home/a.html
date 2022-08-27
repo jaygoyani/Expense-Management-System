@@ -1,0 +1,93 @@
+{% extends 'home/base.html' %}
+{%block title%}Login{%endblock%}
+{% block body%}
+{% include 'home/header.html'%}
+<section class="contact">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-12 section-t8">
+        <center>
+				<font color="red" size=5> {{ msg }}</font>
+        </center>
+          <div class="row">
+            <div class="col-md-7">
+              <form class="form-a contactForm" action="/Account/verify/" method="post" role="form">{% csrf_token %}
+                <div class="row">
+                  <div class="col-md-12 mb-3">
+                    <div class="form-group">
+                    	 <label>Email</label>
+                      <input name="email" type="email" title="Plz Enter your Email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" class="form-control form-control-lg form-control-a" placeholder="Ex : xyz@abc.co" required>
+                    </div>
+                  </div>
+                  <div class="col-md-12 mb-3">
+                    <div class="form-group">
+                    	 <label>Password</label>
+                      <input name="password" type="Password" pattern=".{6,12}" title="6 to 12 characters" class="form-control form-control-lg form-control-a" placeholder="Your Password" required>
+                   </div>
+                  </div>
+                  <div class="col-md-6 mb-3">
+                    <button type="submit" value="submit" class="btn btn-ab">Submit</button>
+                  </div>
+                    <div class="col-md-6 mb-3">
+                    <button type="reset" value="reset" class="btn btn-ba">Reset</button>
+                  </div>
+                </div>
+              </form>
+            </div>
+            </div>
+          </div>
+        </div>
+      </div>
+  </section>
+
+{%include 'home/footer.html'%}
+{%endblock%}
+
+
+{%block header%}
+<nav class="navbar navbar-default navbar-trans navbar-expand-lg fixed-top">
+    <div class="container">
+      <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarDefault"
+        aria-controls="navbarDefault" aria-expanded="false" aria-label="Toggle navigation">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <a class="navbar-brand text-brand" href="index.html">Expense<span class="color-b">Manager</span></a>
+      <div class="navbar-collapse collapse justify-content-center" id="navbarDefault">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link active" href="/">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="about.html">About</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="contact.html">Contact</a>
+          </li>
+          <li>
+            <button type="button" onclick="window.location.href='/Account/'" class="btn btn-ab ">Log in</button>
+          </li>
+          <li>&nbsp;</li>
+          <li>
+            <button type="button" onclick="window.location.href='/Account/create/'" class="btn btn-ba ">Sign up</button>
+          </li>
+        </ul>
+    </div>
+    </div>
+  </nav>
+  {% load static %}
+  <script src="{% static 'home/lib/jquery/jquery.min.js' %}"></script>
+  <script src="{% static 'home/lib/jquery/jquery-migrate.min.js' %}"></script>
+  <script src="{% static 'home/lib/popper/popper.min.js' %}"></script>
+  <script src="{% static 'home/lib/bootstrap/js/bootstrap.min.js' %}"></script>
+  <script src="{% static 'home/lib/easing/easing.min.js' %}"></script>
+  <script src="{% static 'home/lib/owlcarousel/owl.carousel.min.js' %}"></script>
+  <script src="{% static 'home/lib/scrollreveal/scrollreveal.min.js' %}"></script>
+  <!-- Contact Form JavaScript File -->
+  <script src="{% static 'home/contactform/contactform.js' %}"></script>
+
+  <!-- Template Main Javascript File -->
+  <script src="{% static 'home/js/main.js' %}"></script>
+
+{% endblock %}

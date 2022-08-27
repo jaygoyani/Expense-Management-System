@@ -1,0 +1,53 @@
+{% extends 'home/base.html' %}
+{%block title%}Login{%endblock%}
+{% block body%}
+{% include 'home/header.html'%}
+<center>
+    <section class="contact">
+    <div class="container">
+      <div class="row">
+  <div class="col-sm-12 section-t8">
+	<form action="/Account/verifyt/" method="post"> {% csrf_token %}
+		<center>
+			<p> Change Your Password.</p>
+			<table>
+				<tr>
+					<td><font size=4> New Password  &nbsp;</font> </td>
+					<td>
+						<input name="pass" type="Password" pattern=".{6,12}" title="6 to 12 characters" oninvalid="this.setCustomValidity('Please Enter valid Password')" oninput="setCustomValidity('')" class="form-control form-control-lg form-control-a" placeholder="Your Password" required>
+					</td>
+				</tr>
+                <tr>
+                    <td>&nbsp;</td>
+                </tr>
+				<tr>
+					<td> <font size=4>Confirm Password  &nbsp;</font></td>
+					<td>
+						<input name="cpass" type="Password" pattern=".{6,12}" title="6 to 12 characters" oninvalid="this.setCustomValidity('Please Enter valid Password')" oninput="setCustomValidity('')" class="form-control form-control-lg form-control-a" placeholder="Your Password" required>
+					</td>
+				</tr>
+                <tr>
+                    <td>&nbsp;</td>
+                </tr>
+				<tr>
+					<td colspan=2>
+						<center><input type="submit" value="change password" class="btn btn-ab"></center>
+					</td>
+				</tr>
+			</table>
+		</center>
+	</form>
+</div>
+      </div>
+    </div>
+  </section>
+    </center>
+<section class="section-services section-t8">
+    <div class="container">
+      <div class="row">
+
+    </div>
+    </div>
+</section>
+{%include 'home/footer.html'%}
+{%endblock%}

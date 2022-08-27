@@ -1,0 +1,35 @@
+{% extends 'home/base.html' %}
+
+{%block header%}
+{% load static %}
+    <script src="{% static 'home/lib/jquery/jquery.min.js' %}"></script>
+  <script src="{% static 'home/lib/bootstrap/js/bootstrap.min.js' %}"></script>
+<nav class="navbar navbar-default navbar-trans navbar-expand-lg fixed-top">
+    <div class="container">
+      <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarDefault"
+        aria-controls="navbarDefault" aria-expanded="false" aria-label="Toggle navigation">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <a class="navbar-brand text-brand" href="index.html">Expense<span class="color-b">Manager</span></a>
+      <div class="navbar-collapse collapse justify-content-center" id="navbarDefault">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link " href="/User/">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/Friend/">Friend</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/Group/">Group</a>
+          </li>
+          <li class="nav-item "><a class="nav-link " href="/User/profile/"><div class="color-b">{{ request.session.first_name }}</div></a></li>
+      <li class="nav-item"><button type="button" onclick="window.location.href='/'" class="btn btn-ab ">Log Out</button></li>
+        </ul>
+      </div>
+      </div>
+    </div>
+  </nav>
+{% endblock %}
+

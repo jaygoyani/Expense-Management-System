@@ -1,0 +1,71 @@
+{% extends 'home/base.html' %}
+{%block title%}Login{%endblock%}
+{% block body%}
+{% include 'home/header2.html'%}
+<section class="contact">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-12 section-t8">
+        <center>  <font color="red" size=5> {{ msg }}</font></center>
+        <center>  <font color="green" size=5> {{msg1}}</font></center>
+          <div class="row">
+            <div class="col-md-7">
+              <form class="form-a contactForm" action="/User/update/" method="post" role="form">{% csrf_token %}
+                <div class="row">
+                  <div class="col-md-6 mb-3">
+                    <div class="form-group">
+                      <label>First Name</label>
+                      <input type="text" name="first_name" class="form-control form-control-lg form-control-a" value="{{i.first_name}}" data-rule="minlen:4" data-msg="Please enter at least 4 chars"required>
+                      <div class="validation"></div>
+                    </div>
+                  </div>
+                   <div class="col-md-6 mb-3">
+                    <div class="form-group">
+                      <label>Last Name</label>
+                      <input type="text" name="last_name" class="form-control form-control-lg form-control-a" value="{{i.last_name}}"required>
+                    </div>
+                  </div>
+                  <div class="col-md-12 mb-3">
+                    <div class="form-group">
+                    	 <label>Phone Number</label>
+                      <input type="text" name="phone_number" title="Enter Your Number"class="form-control form-control-lg form-control-a" value="{{i.phone_number}}"required>
+                    </div>
+                  </div>
+                  <div class="col-md-12 mb-3">
+                    <div class="form-group">
+                    	 <label>Email</label>
+                      <input name="email" type="email" title="Plz Enter your Email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" class="form-control form-control-lg form-control-a" value="{{i.email}}"required readonly>
+                    </div>
+                  </div>
+                  <div class="col-md-12 mb-3">
+                    <div class="form-group">
+                    	 <label>Password</label>
+                      <input name="password" type="Password" pattern=".{6,12}" title="6 to 12 characters" class="form-control form-control-lg form-control-a" value="{{i.password}}" required>
+                   </div>
+                  </div>
+                  <div class="col-md-12 mb-3">
+                    <div class="form-group">
+                    	 <label>Confirm Password</label>
+                      <input name="cpassword" type="Password" pattern=".{6,12}" title="6 to 12 characters" class="form-control form-control-lg form-control-a" value="{{i.password}}" required>
+                   </div>
+                  </div>
+                  <div class="col-md-6 mb-3">
+                    <button type="submit" value="submit" class="btn btn-ab">Update</button>
+                  </div>
+                </div>
+              </form>
+            </div>
+            </div>
+          </div>
+        </div>
+      </div>
+  </section>
+<section class="section-services section-t8">
+    <div class="container">
+      <div class="row">
+
+    </div>
+    </div>
+</section>
+{%include 'home/footer.html'%}
+{%endblock%}

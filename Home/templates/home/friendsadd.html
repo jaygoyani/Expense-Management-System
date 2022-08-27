@@ -1,0 +1,98 @@
+{% extends 'home/base.html' %}
+{%block title%}Signup{%endblock%}
+{% block body%}
+{% include 'home/header2.html'%}
+
+<form class="form-a contactForm" action="/Friend/add1/" method="post" role="form">
+    {% csrf_token %}
+    <body>
+    <section class="section-services section-t8">
+    <div class="container">
+    Add Friends Username<br><br>
+    <input type="text" name="friend_name">
+      <button type="submit" value="submit" class="btn btn-ab">Submit</button>
+    {{msg}}
+    </div>
+    </section>
+    </body>
+</form>
+
+
+<section class="section-services section-t4">
+    <div class="container">
+<div class="row">
+<h4 class="col-md-5 icon-title">Friend Name</h4>
+<h4 class="col-md-5 icon-title">Expense</h4>
+<h4 class="col-md-2 icon-title">&nbsp;</h4>
+
+                        {% for item in itmes %}
+<div class="col-md-5 mb-1 ">
+
+                      <input type="text"  class="form-control form-control-lg form-control-a" value="{{item.user2}}"  readonly>
+</div>
+
+    <div class="col-md-5 mb-1 ">
+                        <input type="text"  class="form-control form-control-lg form-control-a" value="{{item.amount1}}" readonly >
+    </div>
+
+    <div class="col-md-2 mb-1 ">
+        <form action="/Friend/friexe/" method="post" role="form">
+                        {% csrf_token %}
+                            <input type="hidden" name="fname" value="{{item.user2}}" data-rule="minlen:4" data-msg="Please enter at least 4 chars" >
+                        <button type="submit" value="submit" class="btn btn-ba form-control form-control-lg form-control-a">Add</button>
+                        </form>
+    </div>
+
+            {% endfor %}
+</div>
+
+    </div>
+</section>
+
+
+
+
+ <!--<div class="row">-->
+                  <!--<div class="col-md-4 mb-3">-->
+                    <!--<div class="form-group">-->
+                      <!--<label>First Name</label>-->
+                        <!--{% for i in fri %}-->
+                      <!--<input type="text" name="fname{{forloop.counter}}" class="form-control form-control-lg form-control-a" placeholder="{{i}}" data-rule="minlen:4" data-msg="Please enter at least 4 chars" readonly>-->
+                    <!--{% endfor %}-->
+                    <!--</div>-->
+                  <!--</div>-->
+                   <!--<div class="col-md-2 mb-3">-->
+                    <!--<div class="form-group">-->
+                      <!--<label>Expanse</label>-->
+                        <!--{% for i in amount %}-->
+                      <!--<input type="text" name="fname{{forloop.counter}}" class="form-control form-control-lg form-control-a" placeholder="{{i}}" data-rule="minlen:4" data-msg="Please enter at least 4 chars"readonly>-->
+                    <!--{% endfor %}-->
+                      <!--</div>-->
+                   <!--</div>-->
+<!--<div class="col-md-1 mb-2">-->
+                    <!--<div class="form-group">-->
+                      <!--<label>&nbsp;</label>-->
+
+
+
+    <!--<body>-->
+                        <!--{% for i in amount %}-->
+                        <!--{% endfor %}-->
+                        <!--{% for i in fri %}-->
+                        <!--<form action="/Friend/friexe/" method="post" role="form">-->
+                        <!--{% csrf_token %}-->
+                            <!--<input type="hidden" name="fname" value="{{i}}" data-rule="minlen:4" data-msg="Please enter at least 4 chars" >-->
+                        <!--<button type="submit" value="submit" class="btn btn-ab form-control form-control-lg form-control-a">Add</button>-->
+                        <!--</form>-->
+                        <!--{% endfor %}-->
+    <!--</body>-->
+
+
+                      <!--</div>-->
+                   <!--</div>-->
+ <!--</div>-->
+
+
+
+{%include 'home/footer.html'%}
+{%endblock%}

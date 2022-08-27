@@ -1,0 +1,100 @@
+{% extends 'home/base.html' %}
+{%block title%}Home{%endblock%}
+
+
+{% block body%}
+    {%include 'home/header2.html'%}
+
+<form action="/User/userexpense1/" method="post"  >
+{% csrf_token%}
+
+
+  <section class="section-services section-t8">
+    <div class="container"> {{msg}}
+      <div class="row">
+
+        <div class="col-md-3 mb-1">
+            <div class="form-group">
+              <label>Add</label>
+              <select name="add" class="form-control form-control-lg form-control-a" id="bedrooms">
+                <option>Other</option>
+                <option>Food</option>
+                <option>Entertainment</option>
+                <option>Home</option>
+                <option>Life</option>
+                <option>Transportation</option>
+                <option>Utilities</option>
+              </select>
+            </div>
+          </div>
+          <div class="col-md-3 mb-1">
+            <div class="form-group">
+              <label>Amount</label>
+              <input class="form-control form-control-lg form-control-a" min="0"  title="This must be a number with up to 2 decimal places and/or %" oninvalid="this.setCustomValidity('Please Enter valid Number ')" oninput="setCustomValidity('')" pattern="[0-9]+(\.[0-9]{0,2})?%?" id="garages" name="amount" required>
+            </div>
+          </div>
+        <div class="col-md-3 mb-1">
+            <div class="form-group">
+                <label>Details</label>
+{#                <input type="textarea" name="details" class="form-control form-control-lg form-control-a"  placeholder="Details">#}
+                  <textarea rows="1" cols="1" title="Maximum 200 Characters" oninvalid="this.setCustomValidity('Please Enter valid Details')" oninput="setCustomValidity('')" name="details" class="form-control form-control-lg form-control-a"  placeholder="Details" maxlength="200" ></textarea>
+
+            </div>
+        </div>
+          <div class="col-md-6 mb-3">
+                    <button class="btn btn-ab" >Add</button>
+          </div>
+    </div>
+    </div>
+</section>
+
+</form>
+<section>
+    <div class="container">
+      <div style="text-align: center;">
+          <button type="button"  onclick="window.location.href='/User/chart/'" class="btn btn-ba "> Show Chart</button>
+      </div>
+    </div>
+</section>
+
+<section class="section-services section-t4">
+    <div class="container">
+<div class="row">
+<h4 class="col-md-3 icon-title">Type</h4>
+<h4 class="col-md-3 icon-title">Date</h4>
+<h4 class="col-md-3 icon-title">Details</h4>
+<h4 class="col-md-2 icon-title">Amount</h4>
+
+                        {% for item in itmes %}
+                              <form method="post" id="myForm" class="row" action='/User/userexpensedel/'>
+                                {% csrf_token%}
+                                  <input   type="hidden" name="userexpensedel"  class="form-control form-control-lg form-control-a" value="{{item.id}}"  >
+
+<div class="col-md-3 mb-1 ">
+
+                      <input type="text"  class="form-control form-control-lg form-control-a" value="{{item.exp_type}}"  readonly>
+</div>
+
+    <div class="col-md-3 mb-1 ">
+                        <input type="text"  class="form-control form-control-lg form-control-a" value="{{item.exp_date}}" readonly >
+    </div>
+
+    <div class="col-md-3 mb-1 ">
+        <textarea rows="1" cols="1" class="form-control form-control-lg form-control-a" readonly >{{item.exp_details}}</textarea>
+
+    </div>
+    <div class="col-md-2 mb-1 ">
+    <input type="text"  class="form-control form-control-lg form-control-a" value="{{item.exp_amount}}" readonly>
+</div>
+                           <div class="col-md-1 mb-3">
+                    <button  class="btn btn-ba  form-control form-control-lg form-control-a">Delete</button>
+          </div>
+
+                              </form>
+            {% endfor %}
+</div>
+
+    </div>
+</section>
+{%include 'home/footer.html'%}
+{%endblock%}

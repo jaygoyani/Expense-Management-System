@@ -1,0 +1,131 @@
+{% extends 'home/base.html' %}
+{%block title%}ExpenseManager{%endblock%}
+{% block body%}
+{% include 'home/header.html'%}
+  {% load static %}
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-12 section-t8">
+          <div class="row">
+            <div class="col-md-7">
+              <form class="form-a contactForm" action="#" method="post" role="form">{% csrf_token %}
+                <div id="sendmessage">Your message has been sent. Thank you!</div>
+                <div id="errormessage"></div>
+                <div class="row">
+                  <div class="col-md-6 mb-3">
+                    <div class="form-group">
+                      <input type="text" name="name" class="form-control form-control-lg form-control-a" placeholder="Your Name" data-rule="minlen:4" data-msg="Please enter at least 4 chars">
+                      <div class="validation"></div>
+                    </div>
+                  </div>
+                  <div class="col-md-6 mb-3">
+                    <div class="form-group">
+                      <input name="email" type="email" class="form-control form-control-lg form-control-a" placeholder="Your Email" data-rule="email" data-msg="Please enter a valid email">
+                      <div class="validation"></div>
+                    </div>
+                  </div>
+                  <div class="col-md-12 mb-3">
+                    <div class="form-group">
+                      <input type="text" name="subject" class="form-control form-control-lg form-control-a" placeholder="Subject" data-rule="minlen:4" data-msg="Please enter at least 8 chars of subject">
+                      <div class="validation"></div>
+                    </div>
+                  </div>
+                  <div class="col-md-12 mb-3">
+                    <div class="form-group">
+                      <textarea name="message" class="form-control" name="message" cols="45" rows="8" data-rule="required" data-msg="Please write something for us" placeholder="Message"></textarea>
+                      <div class="validation"></div>
+                    </div>
+                  </div>
+                  <div class="col-md-12">
+                    <button type="submit" class="btn btn-a">Send Message</button>
+                  </div>
+                </div>
+              </form>
+            </div>
+            <div class="col-md-5 section-md-t3">
+              <div class="icon-box section-b2">
+                <div class="icon-box-icon">
+                  <span class="ion-ios-paper-plane"></span>
+                </div>
+                <div class="icon-box-content table-cell">
+                  <div class="icon-box-title">
+                    <h4 class="icon-title">Say Hello</h4>
+                  </div>
+                  <div class="icon-box-content">
+                    <p class="mb-1">Email.
+                      <span class="color-a">Expensesmanager007@gmail.com</span>
+                    </p>
+                    <p class="mb-1">Phone.
+                      <span class="color-a"> +91 9874563210</span>
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div class="icon-box section-b2">
+                <div class="icon-box-icon">
+                  <span class="ion-ios-pin"></span>
+                </div>
+                <div class="icon-box-content table-cell">
+                  <div class="icon-box-title">
+                    <h4 class="icon-title">Find us in</h4>
+                  </div>
+                  <div class="icon-box-content">
+                    <p class="mb-1">
+                     College Rd Chalali Nadiad,
+                      <br>  Gujarat ,387001 India
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div class="icon-box">
+                <div class="icon-box-icon">
+                  <span class="ion-ios-redo"></span>
+                </div>
+                <div class="icon-box-content table-cell">
+                  <div class="icon-box-title">
+                    <h4 class="icon-title">Social networks</h4>
+                  </div>
+                  <div class="icon-box-content">
+                    <div class="socials-footer">
+                      <ul class="list-inline">
+                        <li class="list-inline-item">
+                          <a href="https://www.facebook.com/" target="_blank" class="link-one">
+                            <i class="fa fa-facebook" aria-hidden="true"></i>
+                          </a>
+                        </li>
+                        <li class="list-inline-item">
+                          <a href="https://twitter.com/" target="_blank" class="link-one">
+                            <i class="fa fa-twitter" aria-hidden="true"></i>
+                          </a>
+                        </li>
+                        <li class="list-inline-item">
+                          <a href="https://www.instagram.com/" target="_blank" class="link-one">
+                            <i class="fa fa-instagram" aria-hidden="true"></i>
+                          </a>
+                        </li>
+                        <li class="list-inline-item">
+                          <a href="https://in.pinterest.com/" target="_blank" class="link-one">
+                            <i class="fa fa-pinterest-p" aria-hidden="true"></i>
+                          </a>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+          <div class="col-sm-12">
+          <div class="contact-map box">
+            <div id="map" class="contact-map">
+                <div style="width: 100%"><iframe width="100%" height="600" src="https://maps.google.com/maps?width=100%&amp;height=600&amp;hl=en&amp;coord=22.681177,72.877504&amp;q=College%20Rd%20Chalali%20Nadiad%2C%20Gujarat%20387001%20India+(Dharmsinh%20Desai%20University)&amp;ie=UTF8&amp;t=&amp;z=14&amp;iwloc=A&amp;output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"><a href="https://www.maps.ie/map-my-route/">Map a route</a></iframe></div><br />            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+{%include 'home/footer.html'%}
+{%endblock%}

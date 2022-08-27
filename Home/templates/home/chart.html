@@ -1,0 +1,116 @@
+{% extends 'home/base.html' %}
+{%block title%}Chart{%endblock%}
+{% block body%}
+<html>
+<form action="/User/chart1/" id="myForm" method="post">
+{% csrf_token%}
+    <script
+  src="https://code.jquery.com/jquery-3.3.1.min.js"
+  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+  crossorigin="anonymous"></script>
+    <script>
+window.onload = function() {
+var chart = new CanvasJS.Chart("chartContainer", {
+	animationEnab0led: true,
+	title: {
+		text: "Report"
+	},
+	data: [{
+		type: "pie",
+		startAngle: 240,
+		yValueFormatString: "##0.00\"%\"",
+		indexLabel: "{label} {y}",
+		dataPoints: [
+			{y: {{onj.msg2}}, label: "Entertainment"},
+			{y: {{onj.msg3}}, label: "Food"},
+			{y: {{onj.msg4}}, label: "Home"},
+			{y: {{onj.msg5}}, label: "Life"},
+			{y: {{onj.msg6}}, label: "Transportation"},
+			{y: {{onj.msg7}}, label: "Utilities"},
+			{y: {{onj.msg8}}, label: "Others"}
+		]
+	}]
+});
+chart.render();
+}
+</script>
+<script>
+        function yesnoCheck() {
+    if (document.getElementById('yesCheck').checked) {
+        document.getElementById('ifYes').style.visibility = 'visible';
+    }
+    else document.getElementById('ifYes').style.visibility = 'hidden';
+}
+</script>
+<script>
+var today = new Date();
+var dd = today.getDate();
+var mm = today.getMonth()+1; //January is 0!
+var yyyy = today.getFullYear();
+ if(dd<10){
+        dd='0'+dd
+    }
+    if(mm<10){
+        mm='0'+mm
+    }
+
+thatday = yyyy+'-'+mm+'-'+dd;
+console.log(thatday);
+$(document).ready(function() {
+	$("#aaa").attr('max',thatday);
+	$("#aaaa").attr('max',thatday);
+});
+</script>
+    <script>
+        function autoSubmit()
+{
+    document.getElementById("myForm").submit();
+}
+    </script>
+<body>
+{% include 'home/header2.html' %}
+<section class="section-t3"></section>
+  <section class="section-t3">
+    <div class="container">
+        <h2 class="title-a">Select Report Type</h2>
+        <div class="row section-t3">
+        <div class="col-md-2 mb-3">
+                    <div class="form-group color-a " style="font-size:25px">
+                    <input type="radio" {{ checked0 }} name="type1"  style="border: 0px;width: 15; height: 15;" value="0" onChange="autoSubmit();" onclick="javascript:yesnoCheck();"  id="noCheck" required> Daily
+                    </div>
+                  </div>
+                   <div class="col-md-2 mb-3">
+                    <div class="form-group color-a " style="font-size:25px">
+           <input type="radio" name="type1" {{ checked1 }} style="border: 0px;width: 15; height: 15;" value="1" onChange="autoSubmit();"  onclick="javascript:yesnoCheck();"  id="noCheck"> Weekly
+                   </div>
+                  </div>
+        <div class="col-md-2 mb-3">
+                    <div class="form-group color-a " style="font-size:25px">
+            <input type="radio" name="type1" {{ checked2 }}  style="border: 0px;width: 15; height: 15;" value="2"onclick="javascript:yesnoCheck();" onChange="autoSubmit();"   id="noCheck"> Monthly
+                     </div>
+                  </div>
+        <div class="col-md-2 mb-3">
+            <div class="form-group color-a " style="font-size:25px">
+                <input type="radio" {{ checked3 }} style="border: 0px;width: 15; height: 15;" name="type1" value="3" onclick="javascript:yesnoCheck();" onChange="autoSubmit();"  id="noCheck"> Yearly
+            </div>
+        </div>
+        <div class="col-md-2 mb-3">
+                    <div class="form-group color-a " style="font-size:25px">
+                      <input type="radio" {{ checked4 }} style="border: 0px;width: 15; height: 15;" onclick="javascript:yesnoCheck();" name="type1" value="4" id="yesCheck"> Custom
+    <div id="ifYes" style="visibility:hidden">
+        Start Date: <input  id="aaa" name="sdate"  type="date" min="2015-01-01" required ><br>
+        End Date: &nbsp;&nbsp;<input  id="aaaa" name="edate" type="date" min="2015-01-01" onChange="autoSubmit();" required>
+    </div>
+                    </div>
+                </div>
+        </div>
+                        <div  class="title-a">{{ msg }}</div>
+                        <div id="chartContainer" style="height: 450px; width: 105%;"></div><script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+
+      </div>
+  </section>
+    {%include 'home/footer.html'%}
+    </body>
+</form>
+</html>
+{%endblock%}

@@ -1,0 +1,48 @@
+{% extends 'home/base.html' %}
+{%block title%}Login{%endblock%}
+{% block body%}
+{% include 'home/header.html'%}
+<section class="contact">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-12 section-t8">
+        <center>
+				<font color="red" size=5> {{ msg }}</font>
+        </center>
+          <div class="row">
+            <div class="col-md-7">
+              <form class="form-a contactForm" action="/Account/verify/" method="post" role="form">{% csrf_token %}
+                <div class="row">
+                  <div class="col-md-12 mb-3">
+                    <div class="form-group">
+                    	 <label>Email</label>
+                      <input name="email" type="email" title="Plz Enter your Email( Maximum 40 Characters )" maxlength="40" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" oninvalid="this.setCustomValidity('Please Enter valid Email')" oninput="setCustomValidity('')"  class="form-control form-control-lg form-control-a" placeholder="Ex : xyz@abc.co"required>
+                    </div>
+                  </div>
+                  <div class="col-md-12 mb-3">
+                    <div class="form-group">
+                    	 <label>Password</label>
+                      <input name="password" type="Password" pattern=".{6,12}" title="6 to 12 characters" oninvalid="this.setCustomValidity('Please Enter valid Password')" oninput="setCustomValidity('')"  class="form-control form-control-lg form-control-a" placeholder="Your Password" required>
+                   </div>
+                  </div>
+                    <div class="col-md-12 mb-3">
+                    <a href="/Account/forgot/">Forgot Password???</a>
+                    </div>
+                        <div class="col-md-6 mb-3">
+                    <button type="submit" value="submit" class="btn btn-ab">Submit</button>
+                  </div>
+                    <div class="col-md-6 mb-3">
+                    <button type="reset" value="reset" class="btn btn-ba">Reset</button>
+                  </div>
+                </div>
+              </form>
+            </div>
+            </div>
+          </div>
+        </div>
+      </div>
+  </section>
+<section class="section-t88">
+</section>
+{%include 'home/footer.html'%}
+{%endblock%}

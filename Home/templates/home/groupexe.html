@@ -1,0 +1,50 @@
+{%block title%}Friexe{%endblock%}
+    {%include 'home/header2.html'%}
+<html>
+
+
+    <body>
+  <section class="section-services section-t8">
+    <div class="container">
+      <div class="row">
+        {{gname}}
+<form action="/Group/groupexp1/" method="post" class="container row t8">
+{% csrf_token%}
+
+        <div class="col-md-3 mb-1">
+            <div class="form-group">
+              <label>Add</label>
+              <select name="add" class="form-control form-control-lg form-control-a" id="bedrooms">
+                <option>Other</option>
+                <option>Food</option>
+                <option>Entertainment</option>
+                <option>Home</option>
+                <option>Life</option>
+                <option>Transportation</option>
+                <option>Utilities</option>
+              </select>
+            </div>
+          </div>
+          <div class="col-md-3 mb-1">
+            <div class="form-group">
+              <label>Amount</label>
+              <input class="form-control form-control-lg form-control-a" id="garages" name="amount" type="number">
+            </div>
+          </div>
+        <div class="col-md-3 mb-1">
+            <div class="form-group">
+                <label>Details</label>
+                <input type="text" name="details" class="form-control form-control-lg form-control-a"  placeholder="Details">
+            </div>
+        </div>
+          <div class="col-md-6 mb-3">
+                    <button>Add</button>
+          </div>
+</form>
+    </div>
+    </div>
+</section>
+    </body>
+
+</html>
+{%include 'home/footer.html'%}

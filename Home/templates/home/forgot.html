@@ -1,0 +1,36 @@
+{% extends 'home/base.html' %}
+{%block title%}Login{%endblock%}
+{% block body%}
+{% include 'home/header.html'%}
+<center>
+    <section class="contact">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-12 section-t8">
+		<form action="/Account/forgott/" method="post"> {% csrf_token %}
+			<p>Enter Email Address <br>
+			Registered with account.
+			</p>
+			<p>
+			Email : <input  name="forg" type="email" title="Plz Enter your Email( Maximum 40 Characters )" maxlength="40" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" oninvalid="this.setCustomValidity('Please Enter valid Email')" oninput="setCustomValidity('')" size="30" class="form-control-lg form-control-a" placeholder="Ex : xyz@abc.co"required><br>
+			<br> <input type="submit" value="Get OTP" class="btn btn-ab"> <br> <br>
+			</p>
+			<p>
+				You will receive 6-digit verification code.<br>
+				to confirm your identity.
+			</p>
+		</form>
+  </div>
+      </div>
+    </div>
+  </section>
+    </center>
+<section class="section-services section-t8">
+    <div class="container">
+      <div class="row">
+
+    </div>
+    </div>
+</section>
+{%include 'home/footer.html'%}
+{%endblock%}
